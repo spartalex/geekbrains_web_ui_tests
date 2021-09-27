@@ -1,8 +1,7 @@
 package com.geekbrains;
 
-import org.junit.Test;
 
-import static org.junit.Assert.assertTrue;
+import org.junit.jupiter.api.Test;
 
 /**
  * Unit test for simple App.
