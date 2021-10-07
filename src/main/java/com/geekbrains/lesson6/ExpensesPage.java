@@ -1,5 +1,6 @@
 package com.geekbrains.lesson6;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,6 +16,7 @@ public class ExpensesPage extends BaseView {
     @FindBy(xpath = createExpenseButtonXpathLocator)
     public WebElement createExpenseButton;
 
+    @Step("Клик на кнопку создания заявки на расход")
     public void createExpenseButtonClick() {
         webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(createExpenseButtonXpathLocator)));
         createExpenseButton.click();

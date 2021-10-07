@@ -1,30 +1,21 @@
 package com.geekbrains.lesson6;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class LoginTest {
-    WebDriver webDriver;
-    WebDriverWait webDriverWait;
-
-    @BeforeAll
-    static void registerDriver() {
-        WebDriverManager.chromedriver().setup();
-    }
+@Story("Заявка на расход")
+public class LoginTest extends BaseTest {
 
     @BeforeEach
     void setupBrowser() {
-        webDriver = new ChromeDriver();
-        webDriverWait = new WebDriverWait(webDriver, 10);
         webDriver.get("https://crm.geekbrains.space/");
     }
 
     @Test
+    @Description("Тест создания заявки на расход")
+    @TmsLink("234")
     void loginTest() {
         new LoginPage(webDriver)
                 .fillLogin("Applanatest1")
@@ -47,10 +38,7 @@ public class LoginTest {
 
         webDriverWait.until(ExpectedConditions.invisibilityOf(webDriver.findElement(By.xpath("//div[@class='loader-frame well']"))));
         Assertions.assertTrue(webDriver.findElement(By.xpath("//*[.='Заявка на расход сохранена']")).isDisplayed());
-    }
 
-    @AfterEach
-    void tearDown() {
-        webDriver.quit();
+        webDriver.get("https://afisha.ru");
     }
 }
