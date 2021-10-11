@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class Login2Test extends BaseTest {
 
     @BeforeEach
-    void setupBrowser() {
+    void goToBasePage() {
         webDriver.get("https://crm.geekbrains.space/");
     }
 
@@ -19,6 +19,7 @@ public class Login2Test extends BaseTest {
     @Description("Тест создания заявки на расход")
     @TmsLink("234")
     void loginTest() {
+        webDriver.get("https://crm.geekbrains.space/");
         new LoginPage(webDriver)
                 .fillLogin("Applanatest1")
                 .fillPassword("Student2020!")
